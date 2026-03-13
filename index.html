@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printest · Visual bookmarking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">P</div>
+        <div class="wordmark">
+          <span class="title">Printest</span>
+          <span class="subtitle">visual bookmarking</span>
+        </div>
+      </div>
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search ideas, color, topic…" autocomplete="off">
+        <button aria-label="Search">
+          <svg viewBox="0 0 24 24" role="presentation">
+            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.71.71l.27.28v.79l5 5 1.49-1.49-5-5Zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14Z"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="actions">
+        <button id="openCreate" class="ghost">Create Pin</button>
+        <button class="solid">Login</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Fresh moodboards</p>
+          <h1>Gather inspiration, plan launches, and share ideas with your crew.</h1>
+          <div class="cta-row">
+            <button class="solid" id="heroCreate">Start pinning</button>
+            <button class="ghost">Explore trends</button>
+          </div>
+        </div>
+        <div class="hero-cards">
+          <div class="hero-card accent-1">Brand drops</div>
+          <div class="hero-card accent-2">Interior cozy</div>
+          <div class="hero-card accent-3">Travel light</div>
+        </div>
+      </section>
+
+      <section class="filters">
+        <div class="filter-label">Browse by</div>
+        <div class="pill-row" id="categoryRow"></div>
+      </section>
+
+      <section class="board">
+        <div id="pinGrid" class="masonry"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="createModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Create a new pin</h3>
+        <button class="icon" id="closeCreate" aria-label="Close create pin">&times;</button>
+      </div>
+      <form id="createForm" class="modal-body">
+        <label>Title
+          <input name="title" required placeholder="Moodboard title">
+        </label>
+        <label>Image URL
+          <input name="image" required placeholder="https://images.unsplash.com/...">
+        </label>
+        <label>Tags (comma separated)
+          <input name="tags" placeholder="design, minimal, pastel">
+        </label>
+        <label>Description
+          <textarea name="description" rows="3" placeholder="What makes this inspiring?"></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="ghost" id="cancelCreate">Cancel</button>
+          <button type="submit" class="solid">Save pin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="detailModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card wide">
+      <button class="icon close-detail" id="closeDetail" aria-label="Close details">&times;</button>
+      <div class="detail-grid">
+        <div class="detail-media">
+          <img id="detailImage" alt="">
+        </div>
+        <div class="detail-meta">
+          <p class="eyebrow" id="detailCategory"></p>
+          <h2 id="detailTitle"></h2>
+          <p id="detailDescription"></p>
+          <div class="chip-row" id="detailTags"></div>
+          <div class="author" id="detailAuthor"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden">Saved to your board</div>
+  <script src="script.js"></script>
+</body>
+</html>
